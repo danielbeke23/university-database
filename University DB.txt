@@ -1,0 +1,34 @@
+Student Course Management System
+This Student Course Management System uses a relational database structure to manage students, courses, enrollments, and instructors. It follows best practices in normalization and data integrity and supports flexible assignment of students and instructors to courses.
+Entities and Their Relationships
+1. Students
+  •	Uniquely identified by StudentID.
+  •	Can enroll in multiple courses.
+  •	Many-to-many relationship with Courses, managed through the Enrollment table.
+2. Courses
+  •	Uniquely identified by CourseID.
+  •	Can have multiple students enrolled and multiple instructors assigned.
+  •	Participates in:
+    o Many-to-many relationship with Students via Enrollment.
+    o Many-to-many relationship with Instructors via CourseInstructor.
+3. Instructors
+  •	Uniquely identified by InstructorID.
+  •	Can teach multiple courses.
+  •	Each course can also have multiple instructors (e.g., lead and assistant).
+  •	Connected to Courses via the CourseInstructor table.
+4. Enrollment
+  •	Acts as a junction table between Students and Courses.
+  •	Contains:
+    o StudentID (FK)
+    o CourseID (FK)
+    o Additional fields like Grade, EnrollmentDate
+  •	Each record uniquely connects one student to one course.
+  •	Allows tracking performance, grades, and course history.
+5. CourseInstructor
+  •	Junction table linking Courses and Instructors.
+  •	Contains:
+    o CourseID (FK)
+    o InstructorID (FK)
+  •	Supports many-to-many relationships:
+    o One course can be taught by multiple instructors.
+    o One instructor can teach multiple courses.
